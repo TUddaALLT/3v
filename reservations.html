@@ -1,5 +1,4 @@
 <!DOCTYPE html>
- 
 
 <html class="no-js" lang="en-US">
   <!--<![endif]-->
@@ -579,7 +578,6 @@
     </div>
 
     <input type="hidden" id="all_ajax_exclude_links" value="" />
-    
 
     <script type="text/javascript" src="js/be-modules-plugin.js"></script>
     <script type="text/javascript" src="js/plugins.js"></script>
@@ -602,51 +600,55 @@
     <script type="text/javascript" src="js/mapmarker.jquery.js"></script>
     <script>
       function handleOrderButtonClick() {
-          // Get the values of the form fields
-          var address = document.querySelector("#address").value;
-          var name = document.querySelector("#name").value;
-          var phone = document.querySelector("#phone").value;
-          var quantity = document.querySelector("#quantity").value;
-          var type = document.querySelector("#type").value;
-          var note = document.querySelector("#note").value;
-          
-          // Construct a JSON object with the form field values
-          var formData = {
-              address: address,
-              name: name,
-              phone: phone,
-              quantity: quantity,
-              type: type,
-              note:note
-          };
-  
-          // Send the JSON object to the server using fetch
-          fetch('http://18.212.5.153:8080/food/order', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(formData)
-          })
-          .then(response => {
-              if (!response.ok) {
-                alert("Something went wrong")
-                  throw new Error('Network response was not ok');
-              }
-              return response.json();
-          })
-          .then(data => {
-              alert("Bạn order thành công hệ thống đã nhận được thông tin")
-              console.log('Success:', data);
-              // Handle the response data here
-          })
-          .catch(error => {
-              console.error('Error:', error);
-              // Handle errors here
-          });
+        // Get the values of the form fields
+        var address = document.querySelector("#address").value;
+        var name = document.querySelector("#name").value;
+        var phone = document.querySelector("#phone").value;
+        var quantity = document.querySelector("#quantity").value;
+        var type = document.querySelector("#type").value;
+        var note = document.querySelector("#note").value;
+
+        // Construct a JSON object with the form field values
+        var formData = {
+          address: address,
+          name: name,
+          phone: phone,
+          quantity: quantity,
+          type: type,
+          note: note,
+        };
+
+        // Send the JSON object to the server using fetch
+        var xhr = new XMLHttpRequest();
+
+        // Configure the request
+        xhr.open("POST", "http://18.212.5.153:8080/food/order");
+        xhr.setRequestHeader("Content-Type", "application/json");
+
+        // Define the onload function to handle the response
+        xhr.onload = function () {
+          if (xhr.status === 200) {
+            var data = JSON.parse(xhr.responseText);
+            alert("Bạn order thành công hệ thống đã nhận được thông tin");
+            console.log("Success:", data);
+            // Handle the response data here
+          } else {
+            alert("Something went wrong");
+            console.error("Error:", xhr.statusText);
+            // Handle errors here
+          }
+        };
+
+        // Define the onerror function to handle errors
+        xhr.onerror = function () {
+          alert("Something went wrong");
+          console.error("Request failed");
+          // Handle errors here
+        };
+
+        // Send the JSON object to the server
+        xhr.send(JSON.stringify(formData));
       }
-  </script>
-  
-  
+    </script>
   </body>
 </html>
