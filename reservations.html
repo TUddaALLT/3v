@@ -608,14 +608,16 @@
           var phone = document.querySelector("#phone").value;
           var quantity = document.querySelector("#quantity").value;
           var type = document.querySelector("#type").value;
-  
+          var note = document.querySelector("#note").value;
+          
           // Construct a JSON object with the form field values
           var formData = {
               address: address,
               name: name,
               phone: phone,
               quantity: quantity,
-              type: type
+              type: type,
+              note:note
           };
   
           // Send the JSON object to the server using fetch
@@ -634,6 +636,7 @@
               return response.json();
           })
           .then(data => {
+              alert("Bạn order thành công hệ thống đã nhận được thông tin")
               console.log('Success:', data);
               // Handle the response data here
           })
