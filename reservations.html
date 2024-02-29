@@ -1,11 +1,5 @@
 <!DOCTYPE html>
-<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
-<!--[if gt IE 8]><!-->
-<!-- Orange -->
+ 
 
 <html class="no-js" lang="en-US">
   <!--<![endif]-->
@@ -15,7 +9,7 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <![endif]-->
 
-    <title>Vịt Vương Vấn  </title>
+    <title>Vịt Vương Vấn</title>
     <meta
       name="viewport"
       content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1"
@@ -100,7 +94,6 @@
       type="text/css"
       media="all"
     />
-
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery-migrate.min.js"></script>
     <script type="text/javascript" src="js/modernizr-2.6.2.min.js"></script>
@@ -302,6 +295,113 @@
                         data-animation=""
                         style="background-color: #f4efe8"
                       >
+                        <img
+                          src="images/385538742_1010640340219674_2768533044257954970_n.png"
+                        />
+                      </div>
+
+                      <div class="one-half column-block" data-animation="">
+                        <div class="be-custom-column-inner">
+                          <div class="rtb-booking-form">
+                            <form id="orderForm" class="contact">
+                              <fieldset class="contact">
+                                <div class="phone">
+                                  <label for="rtb-phone"> Phone </label>
+                                  <input
+                                    type="text"
+                                    name="phone"
+                                    id="phone"
+                                    style="
+                                      width: 100%;
+                                      margin-bottom: 10px !important;
+                                    "
+                                  />
+                                </div>
+                                <div class="name">
+                                  <label for="rtb-name"> Name </label>
+                                  <input
+                                    type="text"
+                                    name="name"
+                                    id="name"
+                                    style="
+                                      width: 100%;
+                                      margin-bottom: 10px !important;
+                                    "
+                                  />
+                                </div>
+                                <div class="address">
+                                  <label for="rtb-address"> Address </label>
+                                  <input
+                                    type="text"
+                                    name="address"
+                                    id="address"
+                                    style="
+                                      width: 100%;
+                                      margin-bottom: 10px !important;
+                                    "
+                                  />
+                                </div>
+                                <div class="type">
+                                  <label for="rtb-type"> Type </label>
+                                  <select name="type" id="type" required>
+                                    <option value="1">Size M</option>
+                                    <option value="2">Size L</option>
+                                    <option value="3">Size S</option>
+                                    <option value="4">Combo hạnh phúc</option>
+                                    <option value="5">Conmbo yêu thương</option>
+                                  </select>
+                                </div>
+                                <div class="quantity">
+                                  <label for="rtb-quantity"> Quantity </label>
+                                  <input
+                                    type="text"
+                                    name="quantity"
+                                    id="quantity"
+                                    style="
+                                      width: 100%;
+                                      margin-bottom: 10px !important;
+                                    "
+                                  />
+                                </div>
+                              </fieldset>
+
+                              <button
+                                id="btnOrder"
+                                class="contact_submit be-shortcode mediumbtn be-button rounded"
+                                style="background-color: #333; color: #ffffff"
+                                onclick="handleOrderButtonClick()"
+                              >
+                                Order
+                              </button>
+                              <div id="msg" class="message"></div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--  End Page Content -->
+            </section>
+          </div>
+        </div>
+        <div id="content" class="no-sidebar-page">
+          <div id="content-wrap" class="page-builder">
+            <section id="page-content">
+              <div class="clearfix">
+                <div
+                  class="be-section clearfix"
+                  data-headerscheme="background--dark"
+                  style=""
+                >
+                  <div class="be-section-pad clearfix pad90">
+                    <div class="be-row be-wrap clearfix">
+                      <div
+                        class="one-half column-block"
+                        data-animation=""
+                        style="background-color: #f4efe8"
+                      >
                         <div
                           class="be-custom-column-pad"
                           style="
@@ -409,10 +509,7 @@
           <div id="footer-wrap" class="style2 be-wrap clearfix">
             <div class="footer-left-area">
               <div class="footer-content-inner-left">
-                <img
-                  src="upload/logo.png"
-                  alt="Vịt Vương Vấn "
-                />
+                <img src="upload/logo.png" alt="Vịt Vương Vấn " />
                 <div class="linebreak" style="height: 25px"></div>
                 <div
                   class="special-subtitle-wrap 0"
@@ -469,9 +566,7 @@
     </div>
 
     <input type="hidden" id="all_ajax_exclude_links" value="" />
-    <script>
-      var no_ajax_pages = [];
-    </script>
+    
 
     <script type="text/javascript" src="js/be-modules-plugin.js"></script>
     <script type="text/javascript" src="js/plugins.js"></script>
@@ -492,6 +587,50 @@
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZsDkJFLS0b59q7cmW0EprwfcfUA8d9dg"
     ></script>
     <script type="text/javascript" src="js/mapmarker.jquery.js"></script>
-    <script type="text/javascript" src="js/mapcoordinates.js"></script>
+    <script>
+      function handleOrderButtonClick() {
+          // Get the values of the form fields
+          var address = document.querySelector("#address").value;
+          var name = document.querySelector("#name").value;
+          var phone = document.querySelector("#phone").value;
+          var quantity = document.querySelector("#quantity").value;
+          var type = document.querySelector("#type").value;
+  
+          // Construct a JSON object with the form field values
+          var formData = {
+              address: address,
+              name: name,
+              phone: phone,
+              quantity: quantity,
+              type: type
+          };
+  
+          // Send the JSON object to the server using fetch
+          fetch('http://vitvuongvan.shop:8080/food/order', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(formData)
+          })
+          .then(response => {
+              if (!response.ok) {
+                alert("Something went wrong")
+                  throw new Error('Network response was not ok');
+              }
+              return response.json();
+          })
+          .then(data => {
+              console.log('Success:', data);
+              // Handle the response data here
+          })
+          .catch(error => {
+              console.error('Error:', error);
+              // Handle errors here
+          });
+      }
+  </script>
+  
+  
   </body>
 </html>
