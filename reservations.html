@@ -608,30 +608,35 @@
             phone: document.getElementById("phone").value,
             feedBack: document.getElementById("feedBack").value,
           };
+          var xhr = new XMLHttpRequest();
 
-          fetch("https://vitvuongvan.shop/feedback", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(formData),
-          })
-            .then((response) => {
-              if (response.ok) {
-                return response.text();
-              }
-              throw new Error("Network response was not ok.");
-            })
-            .then((data) => {
-              document.getElementById("msg").textContent =
-                "Feedback submitted successfully.";
-              alert("Feedback submitted successfully");
-            })
-            .catch((error) => {
-              document.getElementById("msg").textContent =
-                "Error submitting feedback: " + error.message;
-              alert("Error submitting feedback:");
-            });
+          // Configure the request
+          xhr.open("POST", "https://vitvuongvan.shop/feedback");
+          xhr.setRequestHeader("Content-Type", "application/json");
+
+          // Define the onload function to handle the response
+          xhr.onload = function () {
+            if (xhr.status === 200) {
+              var data = JSON.parse(xhr.responseText);
+              alert("Bạn order thành công hệ thống đã nhận được thông tin");
+              console.log("Success:", data);
+              // Handle the response data here
+            } else {
+              alert("Something went wrong");
+              console.error("Error:", xhr.statusText);
+              // Handle errors here
+            }
+          };
+
+          // Define the onerror function to handle errors
+          xhr.onerror = function () {
+            alert("Something went wrong");
+            console.error("Request failed");
+            // Handle errors here
+          };
+
+          // Send the JSON object to the server
+          xhr.send(JSON.stringify(formData));
         });
     </script>
     <script>
