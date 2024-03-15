@@ -463,23 +463,11 @@
                             <form id="contact-form" class="contact">
                               <fieldset class="contact">
                                 <div class="phone">
-                                  <label for="rtb-phone"> Name </label>
-                                  <input
-                                    type="text"
-                                    name="website"
-                                    id="website"
-                                    style="
-                                      width: 100%;
-                                      margin-bottom: 10px !important;
-                                    "
-                                  />
-                                </div>
-                                <div class="phone">
                                   <label for="rtb-phone"> Phone </label>
                                   <input
                                     type="text"
-                                    name="website"
-                                    id="website"
+                                    name="phone"
+                                    id="phone"
                                     style="
                                       width: 100%;
                                       margin-bottom: 10px !important;
@@ -490,8 +478,8 @@
                                 <div class="message">
                                   <label for="rtb-message"> Feedback </label>
                                   <textarea
-                                    name="comment"
-                                    id="comment"
+                                    name="feedBack"
+                                    id="feedBack"
                                     style="
                                       width: 97%;
                                       margin-bottom: 10px !important;
@@ -610,6 +598,42 @@
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZsDkJFLS0b59q7cmW0EprwfcfUA8d9dg"
     ></script>
     <script type="text/javascript" src="js/mapmarker.jquery.js"></script>
+    <script>
+      document
+        .getElementById("contact-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          var formData = {
+            phone: document.getElementById("phone").value,
+            feedBack: document.getElementById("feedBack").value,
+          };
+
+          fetch("https://vitvuongvan.shop/feedback", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+          })
+            .then((response) => {
+              if (response.ok) {
+                return response.text();
+              }
+              throw new Error("Network response was not ok.");
+            })
+            .then((data) => {
+              document.getElementById("msg").textContent =
+                "Feedback submitted successfully.";
+              alert("Feedback submitted successfully");
+            })
+            .catch((error) => {
+              document.getElementById("msg").textContent =
+                "Error submitting feedback: " + error.message;
+              alert("Error submitting feedback:");
+            });
+        });
+    </script>
     <script>
       function handleOrderButtonClick() {
         // Get the values of the form fields
